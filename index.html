@@ -134,7 +134,115 @@
 </head>
 <body>
 
-
+    <script>
+        let menuData = [];  // Placeholder for dynamic data
+        const cart = [];
+      
+        // Fetch menu data from the JSON file
+        function fetchMenuData() {
+          fetch('menuData.json')
+            .then(response => response.json())
+            .then(data => {
+              menuData = data;
+              filterMenu(); // Show all items initially
+            })
+            .catch(error => console.error('Error loading menu data:', error));
+        }
+      
+        function openMenu() {
+          const menuPopup = document.getElementById("menuPopup");
+          const overlay = document.querySelector(".overlay");
+          menuPopup.classList.add("active");
+          overlay.classList.add("active");
+          filterMenu(); // Display menu items
+        }
+      
+        function filterMenu() {
+          const typeFilter = document.getElementById("typeFilter").value;
+          const menuList = document.getElementById("menuList");
+      
+          menuList.innerHTML = ""; // Clear current menu list
+      
+          const filteredMenu = typeFilter === "all" 
+            ? menuData 
+            : menuData.filter(item => item.type === typeFilter);
+      
+          filteredMenu.forEach((item) => {
+            const menuItem = document.createElement("div");
+            menuItem.className = "popup-item";
+            menuItem.id = `item-${item.id}`;
+      
+            menuItem.innerHTML = `
+              <div class="item-details">
+                <span>${item.dish}</span>
+                <span class="price">₹${item.price}</span>
+              </div>
+              <div class="actions">
+                <button onclick="addToCart('${item.id}')">+</button>
+                <span class="quantity-display" id="quantity-${item.id}">0</span>
+              </div>
+            `;
+            menuList.appendChild(menuItem);
+          });
+        }
+      
+        function addToCart(itemId) {
+          const item = menuData.find(i => i.id === itemId);
+          const cartItem = cart.find(i => i.id === itemId);
+      
+          if (cartItem) {
+            cartItem.quantity++;
+          } else {
+            cart.push({ ...item, quantity: 1 });
+          }
+      
+          document.getElementById(`quantity-${itemId}`).innerText = cartItem ? cartItem.quantity : 1;
+        }
+      
+        function finalizeCart() {
+          const menuPopup = document.getElementById("menuPopup");
+          const cartPopup = document.getElementById("cartPopup");
+      
+          const overlay = document.querySelector(".overlay");
+          menuPopup.classList.remove("active");
+          cartPopup.classList.add("active");
+      
+          const cartList = document.getElementById("cartList");
+          cartList.innerHTML = ""; // Clear cart list
+      
+          let total = 0;
+      
+          cart.forEach(item => {
+            const cartItem = document.createElement("div");
+            cartItem.className = "cart-item";
+            cartItem.innerHTML = `
+              <span>${item.dish} x${item.quantity}</span>
+              <span>₹${item.price * item.quantity}</span>
+            `;
+            cartList.appendChild(cartItem);
+            total += item.price * item.quantity;
+          });
+      
+          document.getElementById("totalAmount").innerText = `₹${total}`;
+        }
+      
+        function sendOrder() {
+          alert("Order sent successfully!");
+          const cartPopup = document.getElementById("cartPopup");
+          const overlay = document.querySelector(".overlay");
+          cartPopup.classList.remove("active");
+          overlay.classList.remove("active");
+        }
+      
+        function closePopup(popupId) {
+          const popup = document.getElementById(popupId);
+          const overlay = document.querySelector(".overlay");
+          popup.classList.remove("active");
+          overlay.classList.remove("active");
+        }
+      
+        document.addEventListener("DOMContentLoaded", fetchMenuData);
+      </script>
     <!--[if lte IE 9]>
     	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
@@ -161,6 +269,44 @@
             <input type="text" class="border-theme" placeholder="What are you looking for">
             <button type="submit"><i class="fal fa-search"></i></button>
         </form>
+    </div>
+
+    <div class="overlay"></div>
+  
+    <!-- Menu Popup -->
+    <div class="popup" id="menuPopup">
+      <span class="close-btn" onclick="closePopup('menuPopup')">×</span>
+      <div class="popup-header">Menu</div>
+      <select class="dropdown" id="typeFilter" onchange="filterMenu()">
+        <option value="all">All Types</option>
+        <option value="Seafood">Seafood</option>
+        <option value="Non-Veg Gravy">Non-Veg Gravy</option>
+        <option value="Non Veg Dry">Non Veg Dry</option>
+        <option value="Soup">Soup</option>
+        <option value="Biryani">Biryani</option>
+        <option value="Veg Dry">Veg Dry</option>
+        <option value="Veg Gravy">Veg Gravy</option>
+        <option value="Rice & Noodles">Rice & Noodles</option>
+        <option value="Tandoori">Tandoori</option>
+      </select>
+      <div id="menuList" class="menu-list"></div>
+      <div class="popup-footer">
+        <button onclick="finalizeCart()">Finalize Cart</button>
+      </div>
+    </div>
+  
+    <!-- Cart Popup -->
+    <div class="popup" id="cartPopup">
+      <span class="close-btn" onclick="closePopup('cartPopup')">×</span>
+      <div class="popup-header">Your Cart</div>
+      <div id="cartList"></div>
+      <div class="total-price">
+        <span>Total:</span>
+        <span id="totalAmount">₹0</span>
+      </div>
+      <div class="popup-footer">
+        <button onclick="sendOrder()">Order</button>
+      </div>
     </div>
     <!--========================
     Sticky Header
@@ -278,7 +424,7 @@
                                 </div>
                             </div>
                             <div class="header-btn">
-                                <a href="https://wa.me/+917385707223" target="_blank" class="icon-btn text-red cart-btn"><span class="number">Order</span><i class="fal fa-comments"></i></a>
+                                <a onclick="openMenu()" target="_blank" class="icon-btn text-red cart-btn"><span class="number">Order</span><i class="fal fa-comments"></i></a>
                             </div>
                         </div>
                     </div>
@@ -296,7 +442,7 @@
                 <span class="hero-subtitle text-white text-font3 h1 ls-l" style="left: 50%; top: 325px; font-size: 48px; white-space: normal; width: 860px; text-align: center;" data-ls="offsetxin: -200; durationin: 1000; delayin: 600; easingin:easeOutQuint; offsetxout: -50; durationout: 1000;">Good Food Good Mood</span>
                 <h1 class="hero-title text-white ls-l" style="left: 50%; top: 385px; width: 850px; font-size: 80px; white-space: normal; text-align: center; line-height: 90px;" data-ls="offsetxin: 100; durationin: 1000; delayin: 700; easingin:easeOutQuint; offsetxout: 50; durationout: 1000;">Deliciousness jumping into the mouth</h1>
                 <div class="hero-btn ls-l" style="left: 50%; top: 605px; width: 180px; height: 60px; overflow: hidden; border-radius: 50px; line-height: 60px; font-size: 18px;" data-ls="delayin: 1100; showinfo:1; durationin:2000; easingin:easeOutExpo; scalexin:1.5; scaleyin:1.7; scalexout:0; scaleyout: 0; fadein:false; fadeout: false; transformoriginin:50% 143.8% 0;">
-                    <a href="https://wa.me/917385707223?text=Hello, I would like to contact you regarding your services." class="vs-btn mask-style1">Order Now</a>
+                    <a  onclick="openMenu()" class="vs-btn mask-style1">Order Now</a>
                 </div>
             </div>
         </div>

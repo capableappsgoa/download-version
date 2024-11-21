@@ -1,0 +1,1052 @@
+ [
+    {
+        "dish": "Pomplet Thali",
+        "price": "250",
+        "type": "Seafood",
+        "id": "1"
+    },
+    {
+        "dish": "GOAN FISH CURRY",
+        "price": "100/-",
+        "type": "Seafood",
+        "id": "2"
+    },
+    {
+        "dish": "Bangda Thali",
+        "price": "120 /-",
+        "type": "Seafood",
+        "id": "3"
+    },
+    {
+        "dish": "BANGDO / MACKEREL Masala / Rava fry 2PCS",
+        "price": "120 /-",
+        "type": "Seafood",
+        "id": "4"
+    },
+    {
+        "dish": "Veg Thali",
+        "price": "120/-",
+        "type": "Seafood",
+        "id": "5"
+    },
+    {
+        "dish": "BANGDO Rechardo 2PCS",
+        "price": "140 /-",
+        "type": "Seafood",
+        "id": "6"
+    },
+    {
+        "dish": "Rechardo Bangda Thali",
+        "price": "140 /-",
+        "type": "Seafood",
+        "id": "7"
+    },
+    {
+        "dish": "VELIO Masala / Rava",
+        "price": "140 /-",
+        "type": "Seafood",
+        "id": "8"
+    },
+    {
+        "dish": "Bombil Thali",
+        "price": "140/-",
+        "type": "Seafood",
+        "id": "9"
+    },
+    {
+        "dish": "Lepo thali",
+        "price": "140/-",
+        "type": "Seafood",
+        "id": "10"
+    },
+    {
+        "dish": "LEPO...... Masala / Rava fry",
+        "price": "140/-",
+        "type": "Seafood",
+        "id": "11"
+    },
+    {
+        "dish": "THARLI.... Masala/rava fry",
+        "price": "140/-",
+        "type": "Seafood",
+        "id": "12"
+    },
+    {
+        "dish": "Tandoori lobster",
+        "price": "1450/-",
+        "type": "Seafood",
+        "id": "13"
+    },
+    {
+        "dish": "Chicken Thali",
+        "price": "150/-",
+        "type": "Seafood",
+        "id": "14"
+    },
+    {
+        "dish": "BOMBIL Masala / rava fry",
+        "price": "160/-",
+        "type": "Seafood",
+        "id": "15"
+    },
+    {
+        "dish": "MASALA FRY/RAWA FRY...",
+        "price": "160/-",
+        "type": "Seafood",
+        "id": "16"
+    },
+    {
+        "dish": "Modso Thali",
+        "price": "160/-",
+        "type": "Seafood",
+        "id": "17"
+    },
+    {
+        "dish": "PRAWNS BIRYANI",
+        "price": "160/-",
+        "type": "Seafood",
+        "id": "18"
+    },
+    {
+        "dish": "Squids Thali",
+        "price": "160/-",
+        "type": "Seafood",
+        "id": "19"
+    },
+    {
+        "dish": "TISRYO DRY MASALA",
+        "price": "160/-",
+        "type": "Seafood",
+        "id": "20"
+    },
+    {
+        "dish": "Chonak Thali",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "21"
+    },
+    {
+        "dish": "CRABS CHILLY FRY",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "22"
+    },
+    {
+        "dish": "FISH BIRYANI(MODSO)",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "23"
+    },
+    {
+        "dish": "MUDHOSHI (LADY FISH)",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "24"
+    },
+    {
+        "dish": "PRAWNS 65 /GOLDEN FRY/CRISPY FRY",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "25"
+    },
+    {
+        "dish": "PRAWNS CHILLY(Goan/Chinese)",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "26"
+    },
+    {
+        "dish": "PRAWNS Masala/rava fry",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "27"
+    },
+    {
+        "dish": "Prawns Thali",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "28"
+    },
+    {
+        "dish": "SQUIDS RECHEADO MASALA FRY /GOLDEN FRY",
+        "price": "180/-",
+        "type": "Seafood",
+        "id": "29"
+    },
+    {
+        "dish": "King Fish Thali",
+        "price": "200/-",
+        "type": "Seafood",
+        "id": "30"
+    },
+    {
+        "dish": "PRAWNS Kdai/Handi/Kolhapuri",
+        "price": "200/-",
+        "type": "Seafood",
+        "id": "31"
+    },
+    {
+        "dish": "PRAWNS MASALA GRAVY",
+        "price": "200/-",
+        "type": "Seafood",
+        "id": "32"
+    },
+    {
+        "dish": "SQUIDS BUTTER GARLIC",
+        "price": "220/-",
+        "type": "Seafood",
+        "id": "33"
+    },
+    {
+        "dish": "RECHARDO STUFF SQUIDS",
+        "price": "240/-",
+        "type": "Seafood",
+        "id": "34"
+    },
+    {
+        "dish": "Tiger prawns",
+        "price": "380/-",
+        "type": "Seafood",
+        "id": "35"
+    },
+    {
+        "dish": "CHONOK Masala/rava fry(2PCS)",
+        "price": "as per season",
+        "type": "Seafood",
+        "id": "36"
+    },
+    {
+        "dish": "KING FISH Masala/rava fry(2PCS)",
+        "price": "as per season",
+        "type": "Seafood",
+        "id": "37"
+    },
+    {
+        "dish": "MODSO Rechardo/Masala/rava fry(2PCS)",
+        "price": "as per season",
+        "type": "Seafood",
+        "id": "38"
+    },
+    {
+        "dish": "POFRET FISH Masala/rava fry/rechardo",
+        "price": "as per season",
+        "type": "Seafood",
+        "id": "39"
+    },
+    {
+        "dish": "RED SNAPPER( TAMSO)",
+        "price": "as per season",
+        "type": "Seafood",
+        "id": "40"
+    },
+    {
+        "dish": "XINANYO Masala/rava fry",
+        "price": "as per season",
+        "type": "Seafood",
+        "id": "41"
+    },
+    {
+        "dish": "Butter Chicken",
+        "price": "140 / 160  Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "42"
+    },
+    {
+        "dish": "Chicken Handi",
+        "price": "140 / 160 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "43"
+    },
+    {
+        "dish": "Chicken Kadai",
+        "price": "140 / 160 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "44"
+    },
+    {
+        "dish": "Chicken Khema Masala",
+        "price": "140 / 160 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "45"
+    },
+    {
+        "dish": "Chicken Tikka Masala",
+        "price": "180/-",
+        "type": "Non-Veg Gravy",
+        "id": "46"
+    },
+    {
+        "dish": "Chicken Hydrabadi",
+        "price": "140 / 160 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "47"
+    },
+    {
+        "dish": "Chicken Munglai",
+        "price": "140 / 160 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "48"
+    },
+    {
+        "dish": "Chicken Kolapuri",
+        "price": "140 / 160 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "49"
+    },
+    {
+        "dish": "Chicken Curry",
+        "price": "140 / 160 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "50"
+    },
+    {
+        "dish": "Chicken Masala",
+        "price": "140 / 160 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "51"
+    },
+    {
+        "dish": "Mutton Masala",
+        "price": "250 / 290 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "52"
+    },
+    {
+        "dish": "Mutton Roast Masala",
+        "price": "260 / 290 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "53"
+    },
+    {
+        "dish": "Mutton Kadai",
+        "price": "250 / 290 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "54"
+    },
+    {
+        "dish": "Mutton Handi",
+        "price": "250 / 290 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "55"
+    },
+    {
+        "dish": "Mutton Kolhapuri",
+        "price": "250 / 290 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "56"
+    },
+    {
+        "dish": "Mutton Curry",
+        "price": "250 / 290 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "57"
+    },
+    {
+        "dish": "Mutton Mughlai",
+        "price": "250 / 290 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "58"
+    },
+    {
+        "dish": "Mutton Hydrabadi",
+        "price": "250 / 290 Boneless",
+        "type": "Non-Veg Gravy",
+        "id": "59"
+    },
+    {
+        "dish": "Chicken Liver Masala",
+        "price": "120/-",
+        "type": "Non-Veg Gravy",
+        "id": "60"
+    },
+    {
+        "dish": "Chicken Manchow",
+        "price": "80/-",
+        "type": "Soup",
+        "id": "61"
+    },
+    {
+        "dish": "Chicken Clear Soup",
+        "price": "80/-",
+        "type": "Soup",
+        "id": "62"
+    },
+    {
+        "dish": "Prawns Soup Prawns",
+        "price": "100/-",
+        "type": "Soup",
+        "id": "63"
+    },
+    {
+        "dish": "Mutton Manchow Soup",
+        "price": "180/-",
+        "type": "Soup",
+        "id": "64"
+    },
+    {
+        "dish": "Veg Manchaow",
+        "price": "70/-",
+        "type": "Soup",
+        "id": "65"
+    },
+    {
+        "dish": "Veg Noodle Soup",
+        "price": "70/-",
+        "type": "Soup",
+        "id": "66"
+    },
+    {
+        "dish": "Veg Hot Sour Soup",
+        "price": "70/-",
+        "type": "Soup",
+        "id": "67"
+    },
+    {
+        "dish": "Veg Clear Soup",
+        "price": "70/-",
+        "type": "Soup",
+        "id": "68"
+    },
+    {
+        "dish": "Chicken Crispy",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "69"
+    },
+    {
+        "dish": "Chicken Lollipop",
+        "price": "130/-",
+        "type": "Non Veg Dry",
+        "id": "70"
+    },
+    {
+        "dish": "Chicken Schezwan Lollipop",
+        "price": "150/-",
+        "type": "Non Veg Dry",
+        "id": "71"
+    },
+    {
+        "dish": "Chicken Manchurian",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "72"
+    },
+    {
+        "dish": "Chicken Pakoda",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "73"
+    },
+    {
+        "dish": "Chicken Dry Fry",
+        "price": "150/-",
+        "type": "Non Veg Dry",
+        "id": "74"
+    },
+    {
+        "dish": "Chicken Tava Fry",
+        "price": "150/-",
+        "type": "Non Veg Dry",
+        "id": "75"
+    },
+    {
+        "dish": "Chilly Chicken (Chinese)",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "76"
+    },
+    {
+        "dish": "Chicken Tikka",
+        "price": "160/-",
+        "type": "Non Veg Dry",
+        "id": "77"
+    },
+    {
+        "dish": "Chicken Sikh Kabab",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "78"
+    },
+    {
+        "dish": "Chicken 65",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "79"
+    },
+    {
+        "dish": "Chicken Schezwan",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "80"
+    },
+    {
+        "dish": "Garlic Chicken",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "81"
+    },
+    {
+        "dish": "Chicken Butter Garlic",
+        "price": "150/-",
+        "type": "Non Veg Dry",
+        "id": "82"
+    },
+    {
+        "dish": "Chicken Pepper Fry",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "83"
+    },
+    {
+        "dish": "Chicken Rava Fry",
+        "price": "150/-",
+        "type": "Non Veg Dry",
+        "id": "84"
+    },
+    {
+        "dish": "Chilly Chicken (Indian)",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "85"
+    },
+    {
+        "dish": "Chilly Chicken (Goan)",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "86"
+    },
+    {
+        "dish": "Chicken Hyderabadi",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "87"
+    },
+    {
+        "dish": "Chicken Haryali Fry",
+        "price": "150/-",
+        "type": "Non Veg Dry",
+        "id": "88"
+    },
+    {
+        "dish": "Dragon Chicken",
+        "price": "140/-",
+        "type": "Non Veg Dry",
+        "id": "89"
+    },
+    {
+        "dish": "Mutton Sukka",
+        "price": "270/-",
+        "type": "Non Veg Dry",
+        "id": "90"
+    },
+    {
+        "dish": "Chicken Sukka",
+        "price": "150/-",
+        "type": "Non Veg Dry",
+        "id": "91"
+    },
+    {
+        "dish": "Liver Chilly",
+        "price": "100/-",
+        "type": "Non Veg Dry",
+        "id": "92"
+    },
+    {
+        "dish": "Gizzard Chilly",
+        "price": "100/-",
+        "type": "Non Veg Dry",
+        "id": "93"
+    },
+    {
+        "dish": "Egg Biryani",
+        "price": "130/-",
+        "type": "Biryani",
+        "id": "94"
+    },
+    {
+        "dish": "Chicken Biryani",
+        "price": "130/-",
+        "type": "Biryani",
+        "id": "95"
+    },
+    {
+        "dish": "Chicken Hyderabadi Biryani",
+        "price": "140/-",
+        "type": "Biryani",
+        "id": "96"
+    },
+    {
+        "dish": "Chicken Tikka Biryani",
+        "price": "160/-",
+        "type": "Biryani",
+        "id": "97"
+    },
+    {
+        "dish": "Mutton Biryani",
+        "price": "200/-",
+        "type": "Biryani",
+        "id": "98"
+    },
+    {
+        "dish": "Mutton Hyderabadi Biryani",
+        "price": "210/-",
+        "type": "Biryani",
+        "id": "99"
+    },
+    {
+        "dish": "Prawns Biryani",
+        "price": "160/-",
+        "type": "Biryani",
+        "id": "100"
+    },
+    {
+        "dish": "Prawns Hyderabadi Biryani",
+        "price": "170/-",
+        "type": "Biryani",
+        "id": "101"
+    },
+    {
+        "dish": "Fish Biryani (Modso)",
+        "price": "160/-",
+        "type": "Biryani",
+        "id": "102"
+    },
+    {
+        "dish": "Veg Biryani",
+        "price": "130/-",
+        "type": "Biryani",
+        "id": "103"
+    },
+    {
+        "dish": "Veg Hyderabadi Biryani",
+        "price": "130/-",
+        "type": "Biryani",
+        "id": "104"
+    },
+    {
+        "dish": "Paneer Bhurji",
+        "price": "130/-",
+        "type": "Biryani",
+        "id": "105"
+    },
+    {
+        "dish": "Paneer Hyderabadi Biryani",
+        "price": "140/-",
+        "type": "Biryani",
+        "id": "106"
+    },
+    {
+        "dish": "Paneer Tikka Biryani",
+        "price": "160/-",
+        "type": "Biryani",
+        "id": "107"
+    },
+    {
+        "dish": "French Fries",
+        "price": "70/-",
+        "type": "Veg Dry",
+        "id": "108"
+    },
+    {
+        "dish": "Veg Crispy",
+        "price": "130/-",
+        "type": "Veg Dry",
+        "id": "109"
+    },
+    {
+        "dish": "Veg Manchurian Dry",
+        "price": "130/-",
+        "type": "Veg Dry",
+        "id": "110"
+    },
+    {
+        "dish": "Veg Chilly",
+        "price": "130/-",
+        "type": "Veg Dry",
+        "id": "111"
+    },
+    {
+        "dish": "Gobi Manchurian",
+        "price": "130/-",
+        "type": "Veg Dry",
+        "id": "112"
+    },
+    {
+        "dish": "Gobi Crispy",
+        "price": "130/-",
+        "type": "Veg Dry",
+        "id": "113"
+    },
+    {
+        "dish": "Paneer 65",
+        "price": "140/-",
+        "type": "Veg Dry",
+        "id": "114"
+    },
+    {
+        "dish": "Paneer Chilly",
+        "price": "140/-",
+        "type": "Veg Dry",
+        "id": "115"
+    },
+    {
+        "dish": "Mushroom Chilly",
+        "price": "140/-",
+        "type": "Veg Dry",
+        "id": "116"
+    },
+    {
+        "dish": "Mushroom Manchurian",
+        "price": "140/-",
+        "type": "Veg Dry",
+        "id": "117"
+    },
+    {
+        "dish": "Gobi Chilly",
+        "price": "130/-",
+        "type": "Veg Dry",
+        "id": "118"
+    },
+    {
+        "dish": "Mix Veg Gravy",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "119"
+    },
+    {
+        "dish": "Paneer Masala",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "120"
+    },
+    {
+        "dish": "Paneer Tikka Masala",
+        "price": "180/-",
+        "type": "Veg Gravy",
+        "id": "121"
+    },
+    {
+        "dish": "Veg Hyderabadi",
+        "price": "130/-",
+        "type": "Veg Gravy",
+        "id": "122"
+    },
+    {
+        "dish": "Veg Kolhapuri",
+        "price": "130/-",
+        "type": "Veg Gravy",
+        "id": "123"
+    },
+    {
+        "dish": "Paneer Muttor",
+        "price": "130/-",
+        "type": "Veg Gravy",
+        "id": "124"
+    },
+    {
+        "dish": "Veg Tawa",
+        "price": "130/-",
+        "type": "Veg Gravy",
+        "id": "125"
+    },
+    {
+        "dish": "Mushroom Masala",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "126"
+    },
+    {
+        "dish": "Palak Paneer",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "127"
+    },
+    {
+        "dish": "Dal Fry",
+        "price": "130/-",
+        "type": "Veg Gravy",
+        "id": "128"
+    },
+    {
+        "dish": "Aloo Gobi",
+        "price": "130/-",
+        "type": "Veg Gravy",
+        "id": "129"
+    },
+    {
+        "dish": "Paneer Butter Masala",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "130"
+    },
+    {
+        "dish": "Mushroom Chilly",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "131"
+    },
+    {
+        "dish": "Paneer Kadai",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "132"
+    },
+    {
+        "dish": "Paneer Handi",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "133"
+    },
+    {
+        "dish": "Paneer Kolhapuri",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "134"
+    },
+    {
+        "dish": "Paneer Chilly Gravy",
+        "price": "140/-",
+        "type": "Veg Gravy",
+        "id": "135"
+    },
+    {
+        "dish": "Plain Basmati Rice",
+        "price": "80/-",
+        "type": "Rice & Noodles",
+        "id": "136"
+    },
+    {
+        "dish": "Jeera Rice",
+        "price": "90/-",
+        "type": "Rice & Noodles",
+        "id": "137"
+    },
+    {
+        "dish": "Veg Pulao",
+        "price": "130/-",
+        "type": "Rice & Noodles",
+        "id": "138"
+    },
+    {
+        "dish": "Paneer Pulao",
+        "price": "120/-",
+        "type": "Rice & Noodles",
+        "id": "139"
+    },
+    {
+        "dish": "Paneer Fried Rice",
+        "price": "130/-",
+        "type": "Rice & Noodles",
+        "id": "140"
+    },
+    {
+        "dish": "Paneer Schezwan Fried Rice",
+        "price": "140/-",
+        "type": "Rice & Noodles",
+        "id": "141"
+    },
+    {
+        "dish": "Veg Fried Rice",
+        "price": "120/-",
+        "type": "Rice & Noodles",
+        "id": "142"
+    },
+    {
+        "dish": "Prawns Fried Rice",
+        "price": "160/-",
+        "type": "Rice & Noodles",
+        "id": "143"
+    },
+    {
+        "dish": "Chicken Fried Rice",
+        "price": "120/-",
+        "type": "Rice & Noodles",
+        "id": "144"
+    },
+    {
+        "dish": "Chicken Schezwan Fried Rice",
+        "price": "130/-",
+        "type": "Rice & Noodles",
+        "id": "145"
+    },
+    {
+        "dish": "Chicken Triple Fried Rice",
+        "price": "180/-",
+        "type": "Rice & Noodles",
+        "id": "146"
+    },
+    {
+        "dish": "Mix Fried Rice",
+        "price": "160/-",
+        "type": "Rice & Noodles",
+        "id": "147"
+    },
+    {
+        "dish": "Veg Triple Fried Rice",
+        "price": "160/-",
+        "type": "Rice & Noodles",
+        "id": "148"
+    },
+    {
+        "dish": "Veg Schezwan Fried Rice",
+        "price": "120/-",
+        "type": "Rice & Noodles",
+        "id": "149"
+    },
+    {
+        "dish": "Veg Noodles",
+        "price": "120/-",
+        "type": "Rice & Noodles",
+        "id": "150"
+    },
+    {
+        "dish": "Veg Schezwan Noodles",
+        "price": "130/-",
+        "type": "Rice & Noodles",
+        "id": "151"
+    },
+    {
+        "dish": "Chicken Noodles",
+        "price": "120/-",
+        "type": "Rice & Noodles",
+        "id": "152"
+    },
+    {
+        "dish": "Chicken Schezwan Noodles",
+        "price": "130/-",
+        "type": "Rice & Noodles",
+        "id": "153"
+    },
+    {
+        "dish": "Chicken Butter Garlic Fried Rice",
+        "price": "140/-",
+        "type": "Rice & Noodles",
+        "id": "154"
+    },
+    {
+        "dish": "Prawns Noodles",
+        "price": "160/-",
+        "type": "Rice & Noodles",
+        "id": "155"
+    },
+    {
+        "dish": "Egg Fried Rice",
+        "price": "120/-",
+        "type": "Rice & Noodles",
+        "id": "156"
+    },
+    {
+        "dish": "Tandoori Roti",
+        "price": "10/-",
+        "type": "Tandoori",
+        "id": "157"
+    },
+    {
+        "dish": "Butter Roti",
+        "price": "15/-",
+        "type": "Tandoori",
+        "id": "158"
+    },
+    {
+        "dish": "Plain Naan",
+        "price": "30/-",
+        "type": "Tandoori",
+        "id": "159"
+    },
+    {
+        "dish": "Butter Naan",
+        "price": "40/-",
+        "type": "Tandoori",
+        "id": "160"
+    },
+    {
+        "dish": "Butter Garlic Naan",
+        "price": "50/-",
+        "type": "Tandoori",
+        "id": "161"
+    },
+    {
+        "dish": "Cheese Garlic Naan",
+        "price": "60/-",
+        "type": "Tandoori",
+        "id": "162"
+    },
+    {
+        "dish": "Cheese Chilly Garlic Naan",
+        "price": "60/-",
+        "type": "Tandoori",
+        "id": "163"
+    },
+    {
+        "dish": "Stuff Cheese Garlic Naan",
+        "price": "80/-",
+        "type": "Tandoori",
+        "id": "164"
+    },
+    {
+        "dish": "Parata",
+        "price": "20/-",
+        "type": "Tandoori",
+        "id": "165"
+    },
+    {
+        "dish": "Paneer Kabab",
+        "price": "160/-",
+        "type": "Tandoori",
+        "id": "166"
+    },
+    {
+        "dish": "Paneer Tikka",
+        "price": "160/-",
+        "type": "Tandoori",
+        "id": "167"
+    },
+    {
+        "dish": "Paneer Haryali",
+        "price": "160/-",
+        "type": "Tandoori",
+        "id": "168"
+    },
+    {
+        "dish": "Paneer Malai",
+        "price": "160/-",
+        "type": "Tandoori",
+        "id": "169"
+    },
+    {
+        "dish": "Chicken Haryali Kabab",
+        "price": "160/-",
+        "type": "Tandoori",
+        "id": "170"
+    },
+    {
+        "dish": "Chicken Malai Kabab",
+        "price": "180/-",
+        "type": "Tandoori",
+        "id": "171"
+    },
+    {
+        "dish": "Tandoori Full",
+        "price": "330/-",
+        "type": "Tandoori",
+        "id": "172"
+    },
+    {
+        "dish": "Tandoori Half",
+        "price": "170/-",
+        "type": "Tandoori",
+        "id": "173"
+    },
+    {
+        "dish": "Liver Tikka",
+        "price": "130/-",
+        "type": "Tandoori",
+        "id": "174"
+    },
+    {
+        "dish": "Butter Garlic Roti",
+        "price": "30/-",
+        "type": "Tandoori",
+        "id": "175"
+    }
+]
