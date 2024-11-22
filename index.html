@@ -127,6 +127,7 @@
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/PopUp.css">
     <!-- Theme Color CSS -->
     <link rel="stylesheet" href="assets/css/theme-color1.css">
     <link rel="stylesheet" id="themeColor" href="#">
@@ -227,20 +228,34 @@
         }
       
         function sendOrder() {
-          alert("Order sent successfully!");
-          const cartPopup = document.getElementById("cartPopup");
-          const overlay = document.querySelector(".overlay");
-          cartPopup.classList.remove("active");
-          overlay.classList.remove("active");
-        }
-      
-        function closePopup(popupId) {
-          const popup = document.getElementById(popupId);
-          const overlay = document.querySelector(".overlay");
-          popup.classList.remove("active");
-          overlay.classList.remove("active");
-        }
-      
+  if (cart.length === 0) {
+    alert("Your cart is empty. Add items to place an order.");
+    return;
+  }
+
+  // Build the message text
+  let message = "Hello, I would like to place an order:\n\n";
+  let total = 0;
+
+  cart.forEach(item => {
+    message += `• ${item.dish} x${item.quantity} - ₹${item.price * item.quantity}\n`;
+    total += item.price * item.quantity;
+  });
+
+  message += `\nTotal: ₹${total}`;
+  message += `\n\nThank you!`;
+
+  // Encode the message for the URL
+  const encodedMessage = encodeURIComponent(message);
+
+  // WhatsApp URL (replace with your desired number)
+  const phoneNumber = "917385707223"; // Replace with your WhatsApp number (use country code)
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+  // Open WhatsApp in a new tab
+  window.open(whatsappURL, "_blank");
+}
+
         document.addEventListener("DOMContentLoaded", fetchMenuData);
       </script>
     <!--[if lte IE 9]>
@@ -326,7 +341,7 @@
                                 <a href="index.html">Home</a>
                             </li>
                             <li class="menu-item">
-                                <a href="menu.html">Specials</a>
+                                <a href="menu.html">Our Best Menu</a>
                             </li>
                             <li class="menu-item">
                                 <a href="/menu.pdf">Download Menu</a>
@@ -400,7 +415,7 @@
                                     <a href="index.html">Home</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="menu.html">Specials</a>
+                                    <a href="menu.html">Our Best Menu</a>
                                 </li>
                                 <li class="mega-menu-wrap menu-item">
                                     <a  href="/menu.pdf" download>Download Menu</a>
@@ -735,7 +750,7 @@
                                     <div class="col-sm-6 col-md-6">
                                         <ul class="menu">
                                             <li><a href="/index.html">Home</a></li>
-                                            <li><a href="menu.html">Specials</a></li>
+                                            <li><a href="menu.html">Our Best Menu</a></li>
                                             <li><a href="menu.pdf">Download Mneu</a></li>
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>

@@ -1,0 +1,166 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px;
+    display: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .popup.active {
+    display: block;
+    opacity: 1;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 999;
+  }
+  .overlay.active {
+    display: block;
+  }
+
+  /* Header and Close Button */
+  .popup-header {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 22px;
+    color: #e74c3c;
+    cursor: pointer;
+  }
+
+  /* Menu List Styles */
+  .dropdown {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 1em;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .dropdown:hover {
+    border-color: #007bff;
+  }
+  .menu-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  .popup-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 1em;
+    color: #333;
+  }
+  .popup-item:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  /* Flex column layout for name and price */
+  .popup-item .item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .popup-item .price {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
+  }
+
+  .quantity-display {
+    font-weight: 500;
+    color: #007bff;
+    margin-left: 10px;
+  }
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Cart Popup Styles */
+  .popup-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  /* Cart List Styles */
+  .cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Total Price Display */
+  .total-price {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 15px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Smooth Scroll */
+  .menu-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  .menu-list::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+  }
+  .menu-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Flexbox Layout for Item and Quantity */
+  .popup-item .actions {
+    display: flex;
+    align-items: center;
+  }
+  .popup-item .actions button {
+    margin-right: 10px;
+  }
