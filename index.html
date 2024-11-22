@@ -157,6 +157,18 @@
           overlay.classList.add("active");
           filterMenu(); // Display menu items
         }
+        function closePopup(popupId) {
+  const popup = document.getElementById(popupId);
+  const overlay = document.querySelector(".overlay");
+
+  if (popup) {
+    popup.classList.remove("active");
+  }
+  if (overlay) {
+    overlay.classList.remove("active");
+  }
+}
+
       
         function filterMenu() {
           const typeFilter = document.getElementById("typeFilter").value;
