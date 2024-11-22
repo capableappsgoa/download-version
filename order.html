@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu and Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .popup {
+      position: fixed;
+      font-family: 'Inter', sans-serif;
+      font-size: x-small;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 322px;
+      display: none;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .popup.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: none;
+      z-index: 999;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .popup-header {
+      font-size: 1.2em;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 22px;
+      color: #e74c3c;
+      cursor: pointer;
+    }
+
+    .menu-note {
+      font-size: 0.9em;
+      color: #d35400;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .menu-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .popup-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    .popup-item button {
+      margin-left: 10px;
+    }
+
+    .quantity-display {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      margin-top: 30px;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .total-price {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #333;
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Dropdown Filter Styles */
+    .filter-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    select {
+      padding: 5px 10px;
+      font-size: 0.9em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay" onclick="closeAllPopups()"></div>
+
+  <!-- Menu Popup -->
+  <div class="popup active" id="menuPopup">
+    <span class="close-btn" onclick="closePopup('menuPopup')">×</span>
+    <div class="popup-header">Menu</div>
+
+    <!-- Boneless Note -->
+    <div class="menu-note">* Boneless charges extra</div>
+
+    <!-- Filter Dropdown -->
+    <div class="filter-container">
+      <select id="filterSelect" onchange="filterMenu()">
+        <option value="">All Categories</option>
+        <option value="Seafood">Seafood</option>
+        <option value="Non-Veg Gravy">Non-Veg Gravy</option>
+        <option value="Non Veg Dry">Non Veg Dry</option>
+        <option value="Soup">Soup</option>
+        <option value="Biryani">Biryani</option>
+        <option value="Veg Dry">Veg Dry</option>
+        <option value="Veg Gravy">Veg Gravy</option>
+        <option value="Rice & Noodles">Rice & Noodles</option>
+        <option value="Tandoori">Tandoori</option>
+      </select>
+    </div>
+
+    <div id="menuList" class="menu-list"></div>
+    <div class="popup-footer">
+      <button onclick="finalizeCart()">Finalize Cart</button>
+    </div>
+  </div>
+
+  <!-- Cart Popup -->
+  <div class="popup" id="cartPopup">
+    <span class="close-btn" onclick="closePopup('cartPopup')">×</span>
+    <div class="popup-header">Your Cart</div>
+    <div id="cartList"></div>
+    <div class="total-price">
+      <span>Total:</span>
+      <span id="totalAmount">₹0</span>
+    </div>
+    <div class="popup-footer">
+      <button onclick="sendOrder()">Order</button>
+    </div>
+  </div>
+
+  <script>
+    const menuData = [
+
+    {
+        dish: "Pomplet Thali",
+        price: 250,
+        type: "Seafood",
+        id: "1"
+      },
+      {
+        dish: "GOAN FISH CURRY",
+        price: 100,
+        type: "Seafood",
+        id: "2"
+      },
+      {
+        dish: "Bangda Thali",
+        price: 120,
+        type: "Seafood",
+        id: "3"
+      },
+      {
+        dish: "BANGDO / MACKEREL Masala / Rava fry 2PCS",
+        price: 120,
+        type: "Seafood",
+        id: "4"
+      },
+      {
+        dish: "Veg Thali",
+        price: 120,
+        type: "Seafood",
+        id: "5"
+      },
+      {
+        dish: "BANGDO Rechardo 2PCS",
+        price: 140,
+        type: "Seafood",
+        id: "6"
+      },
+      {
+        dish: "Rechardo Bangda Thali",
+        price: 140,
+        type: "Seafood",
+        id: "7"
+      },
+      {
+        dish: "VELIO Masala / Rava",
+        price: 40,
+        type: "Seafood",
+        id: "8"
+      },
+      {
+        dish: "Bombil Thali",
+        price: 140,
+        type: "Seafood",
+        id: "9"
+      },
+      {
+        dish: "Lepo thali",
+        price: 140,
+        type: "Seafood",
+        id: "10"
+      },
+      {
+        dish: "LEPO...... Masala / Rava fry",
+        price: 140,
+        type: "Seafood",
+        id: "11"
+      },
+      {
+        dish: "THARLI.... Masala/rava fry",
+        price: 140,
+        type: "Seafood",
+        id: "12"
+      },
+      {
+        dish: "Tandoori lobster",
+        price: 1450,
+        type: "Seafood",
+        id: "13"
+      },
+      {
+        dish: "Chicken Thali",
+        price: 150,
+        type: "Seafood",
+        id: "14"
+      },
+      {
+        dish: "BOMBIL Masala / rava fry",
+        price: 160,
+        type: "Seafood",
+        id: "15"
+      },
+      {
+        dish: "MASALA FRY/RAWA FRY...",
+        price: 160,
+        type: "Seafood",
+        id: "16"
+      },
+      {
+        dish: "Modso Thali",
+        price: 160,
+        type: "Seafood",
+        id: "17"
+      },
+      {
+        dish: "PRAWNS BIRYANI",
+        price: 160,
+        type: "Seafood",
+        id: "18"
+      },
+      {
+        dish: "Squids Thali",
+        price: 160,
+        type: "Seafood",
+        id: "19"
+      },
+      {
+        dish: "TISRYO DRY MASALA",
+        price: 160,
+        type: "Seafood",
+        id: "20"
+      },
+      {
+        dish: "Chonak Thali",
+        price: 180,
+        type: "Seafood",
+        id: "21"
+      },
+      {
+        dish: "CRABS CHILLY FRY",
+        price: 180,
+        type: "Seafood",
+        id: "22"
+      },
+      {
+        dish: "FISH BIRYANI(MODSO)",
+        price: 180,
+        type: "Seafood",
+        id: "23"
+      },
+      {
+        dish: "MUDHOSHI (LADY FISH)",
+        price: 180,
+        type: "Seafood",
+        id: "24"
+      },
+      {
+        dish: "PRAWNS 65 /GOLDEN FRY/CRISPY FRY",
+        price: 180,
+        type: "Seafood",
+        id: "25"
+      },
+      {
+        dish: "PRAWNS CHILLY(Goan/Chinese)",
+        price: 180,
+        type: "Seafood",
+        id: "26"
+      },
+      {
+        dish: "PRAWNS Masala/rava fry",
+        price: 180,
+        type: "Seafood",
+        id: "27"
+      },
+      {
+        dish: "Prawns Thali",
+        price: 180,
+        type: "Seafood",
+        id: "28"
+      },
+      {
+        dish: "SQUIDS RECHEADO MASALA FRY /GOLDEN FRY",
+        price: 180,
+        type: "Seafood",
+        id: "29"
+      },
+      {
+        dish: "King Fish Thali",
+        price: 200,
+        type: "Seafood",
+        id: "30"
+      },
+      {
+        dish: "PRAWNS Kdai/Handi/Kolhapuri",
+        price: 200,
+        type: "Seafood",
+        id: "31"
+      },
+      {
+        dish: "PRAWNS MASALA GRAVY",
+        price: 200,
+        type: "Seafood",
+        id: "32"
+      },
+      {
+        dish: "SQUIDS BUTTER GARLIC",
+        price: 220,
+        type: "Seafood",
+        id: "33"
+      },
+      {
+        dish: "RECHARDO STUFF SQUIDS",
+        price: 240,
+        type: "Seafood",
+        id: "34"
+      },
+      {
+        dish: "Tiger prawns",
+        price: 380,
+        type: "Seafood",
+        id: "35"
+      },
+      {
+        dish: "CHONOK Masala/rava fry(2PCS)",
+        price: "as per season",
+        type: "Seafood",
+        id: "36"
+      },
+      {
+        dish: "KING FISH Masala/rava fry(2PCS)",
+        price: "as per season",
+        type: "Seafood",
+        id: "37"
+      },
+      {
+        dish: "MODSO Rechardo/Masala/rava fry(2PCS)",
+        price: "as per season",
+        type: "Seafood",
+        id: "38"
+      },
+      {
+        dish: "POFRET FISH Masala/rava fry/rechardo",
+        price: "as per season",
+        type: "Seafood",
+        id: "39"
+      },
+      {
+        dish: "RED SNAPPER( TAMSO)",
+        price: "as per season",
+        type: "Seafood",
+        id: "40"
+      },
+      {
+        dish: "XINANYO Masala/rava fry",
+        price: "as per season",
+        type: "Seafood",
+        id: "41"
+      },
+      {
+        dish: "Butter Chicken",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "42"
+      },
+      {
+        dish: "Chicken Handi",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "43"
+      },
+      {
+        dish: "Chicken Kadai",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "44"
+      },
+      {
+        dish: "Chicken Khema Masala",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "45"
+      },
+      {
+        dish: "Chicken Tikka Masala",
+        price: "180/-",
+        type: "Non-Veg Gravy",
+        id: "46"
+      },
+      {
+        dish: "Chicken Hydrabadi",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "47"
+      },
+      {
+        dish: "Chicken Munglai",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "48"
+      },
+      {
+        dish: "Chicken Kolapuri",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "49"
+      },
+      {
+        dish: "Chicken Curry",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "50"
+      },
+      {
+        dish: "Chicken Masala",
+        price: 140,
+        boneless: true,
+        bonelessPrice: 160,
+        type: "Non-Veg Gravy",
+        id: "51"
+      },
+      {
+        dish: "Mutton Masala",
+        price: 250,
+        boneless: true,
+        bonelessPrice: 290,
+        type: "Non-Veg Gravy",
+        id: "52"
+      },
+      {
+        dish: "Mutton Roast Masala",
+        price: 260,
+        boneless: true,
+        bonelessPrice: 290,
+        type: "Non-Veg Gravy",
+        id: "53"
+      },
+      {
+        dish: "Mutton Kadai",
+        price: 250,
+        boneless: true,
+        bonelessPrice: 290,
+        type: "Non-Veg Gravy",
+        id: "54"
+      },
+      {
+        dish: "Mutton Handi",
+        price: 250,
+        boneless: true,
+        bonelessPrice: 290,
+        type: "Non-Veg Gravy",
+        id: "55"
+      },
+      {
+        dish: "Mutton Kolhapuri",
+        price: 250,
+        boneless: true,
+        bonelessPrice: 290,
+        type: "Non-Veg Gravy",
+        id: "56"
+      },
+      {
+        dish: "Mutton Curry",
+        price: 250,
+        boneless: true,
+        bonelessPrice: 290,
+        type: "Non-Veg Gravy",
+        id: "57"
+      },
+      {
+        dish: "Mutton Mughlai",
+        price: 250,
+        boneless: true,
+        bonelessPrice: 290,
+        type: "Non-Veg Gravy",
+        id: "58"
+      },
+      {
+        dish: "Mutton Hydrabadi",
+        price: 250,
+        boneless: true,
+        bonelessPrice: 290,
+        type: "Non-Veg Gravy",
+        id: "59"
+      },
+      {
+        dish: "Chicken Liver Masala",
+        price: 120,
+        type: "Non-Veg Gravy",
+        id: "60"
+      },
+      {
+        dish: "Chicken Manchow",
+        price: 80,
+        type: "Soup",
+        id: "61"
+      },
+      {
+        dish: "Chicken Clear Soup",
+        price: 80,
+        type: "Soup",
+        id: "62"
+      },
+      {
+        dish: "Prawns Soup Prawns",
+        price: 100,
+        type: "Soup",
+        id: "63"
+      },
+      {
+        dish: "Mutton Manchow Soup",
+        price: 180,
+        type: "Soup",
+        id: "64"
+      },
+      {
+        dish: "Veg Manchaow",
+        price: 70,
+        type: "Soup",
+        id: "65"
+      },
+      {
+        dish: "Veg Noodle Soup",
+        price: 70,
+        type: "Soup",
+        id: "66"
+      },
+      {
+        dish: "Veg Hot Sour Soup",
+        price: 70,
+        type: "Soup",
+        id: "67"
+      },
+      {
+        dish: "Veg Clear Soup",
+        price: 70,
+        type: "Soup",
+        id: "68"
+      },
+      {
+        dish: "Chicken Crispy",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "69"
+      },
+      {
+        dish: "Chicken Lollipop",
+        price: 130,
+        type: "Non Veg Dry",
+        id: "70"
+      },
+      {
+        dish: "Chicken Schezwan Lollipop",
+        price: 150,
+        type: "Non Veg Dry",
+        id: "71"
+      },
+      {
+        dish: "Chicken Manchurian",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "72"
+      },
+      {
+        dish: "Chicken Pakoda",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "73"
+      },
+      {
+        dish: "Chicken Dry Fry",
+        price: 150,
+        type: "Non Veg Dry",
+        id: "74"
+      },
+      {
+        dish: "Chicken Tava Fry",
+        price: 150,
+        type: "Non Veg Dry",
+        id: "75"
+      },
+      {
+        dish: "Chilly Chicken (Chinese)",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "76"
+      },
+      {
+        dish: "Chicken Tikka",
+        price: 160,
+        type: "Non Veg Dry",
+        id: "77"
+      },
+      {
+        dish: "Chicken Sikh Kabab",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "78"
+      },
+      {
+        dish: "Chicken 65",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "79"
+      },
+      {
+        dish: "Chicken Schezwan",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "80"
+      },
+      {
+        dish: "Garlic Chicken",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "81"
+      },
+      {
+        dish: "Chicken Butter Garlic",
+        price: 150,
+        type: "Non Veg Dry",
+        id: "82"
+      },
+      {
+        dish: "Chicken Pepper Fry",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "83"
+      },
+      {
+        dish: "Chicken Rava Fry",
+        price: 150,
+        type: "Non Veg Dry",
+        id: "84"
+      },
+      {
+        dish: "Chilly Chicken (Indian)",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "85"
+      },
+      {
+        dish: "Chilly Chicken (Goan)",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "86"
+      },
+      {
+        dish: "Chicken Hyderabadi",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "87"
+      },
+      {
+        dish: "Chicken Haryali Fry",
+        price: 150,
+        type: "Non Veg Dry",
+        id: "88"
+      },
+      {
+        dish: "Dragon Chicken",
+        price: 140,
+        type: "Non Veg Dry",
+        id: "89"
+      },
+      {
+        dish: "Mutton Sukka",
+        price: 270,
+        type: "Non Veg Dry",
+        id: "90"
+      },
+      {
+        dish: "Chicken Sukka",
+        price: 150,
+        type: "Non Veg Dry",
+        id: "91"
+      },
+      {
+        dish: "Liver Chilly",
+        price: 100,
+        type: "Non Veg Dry",
+        id: "92"
+      },
+      {
+        dish: "Gizzard Chilly",
+        price: 100,
+        type: "Non Veg Dry",
+        id: "93"
+      },
+      {
+        dish: "Egg Biryani",
+        price: 130,
+        type: "Biryani",
+        id: "94"
+      },
+      {
+        dish: "Chicken Biryani",
+        price: 130,
+        type: "Biryani",
+        id: "95"
+      },
+      {
+        dish: "Chicken Hyderabadi Biryani",
+        price: 140,
+        type: "Biryani",
+        id: "96"
+      },
+      {
+        dish: "Chicken Tikka Biryani",
+        price: 160,
+        type: "Biryani",
+        id: "97"
+      },
+      {
+        dish: "Mutton Biryani",
+        price: 200,
+        type: "Biryani",
+        id: "98"
+      },
+      {
+        dish: "Mutton Hyderabadi Biryani",
+        price: 210,
+        type: "Biryani",
+        id: "99"
+      },
+      {
+        dish: "Prawns Biryani",
+        price: 160,
+        type: "Biryani",
+        id: "100"
+      },
+      {
+        dish: "Prawns Hyderabadi Biryani",
+        price: 170,
+        type: "Biryani",
+        id: "101"
+      },
+      {
+        dish: "Fish Biryani (Modso)",
+        price: 160,
+        type: "Biryani",
+        id: "102"
+      },
+      {
+        dish: "Veg Biryani",
+        price: 130,
+        type: "Biryani",
+        id: "103"
+      },
+      {
+        dish: "Veg Hyderabadi Biryani",
+        price: 130,
+        type: "Biryani",
+        id: "104"
+      },
+      {
+        dish: "Paneer Bhurji",
+        price: 130,
+        type: "Biryani",
+        id: "105"
+      },
+      {
+        dish: "Paneer Hyderabadi Biryani",
+        price: 140,
+        type: "Biryani",
+        id: "106"
+      },
+      {
+        dish: "Paneer Tikka Biryani",
+        price: 160,
+        type: "Biryani",
+        id: "107"
+      },
+      {
+        dish: "French Fries",
+        price: 70,
+        type: "Veg Dry",
+        id: "108"
+      },
+      {
+        dish: "Veg Crispy",
+        price: 130,
+        type: "Veg Dry",
+        id: "109"
+      },
+      {
+        dish: "Veg Manchurian Dry",
+        price: 130,
+        type: "Veg Dry",
+        id: "110"
+      },
+      {
+        dish: "Veg Chilly",
+        price: 130,
+        type: "Veg Dry",
+        id: "111"
+      },
+      {
+        dish: "Gobi Manchurian",
+        price: 130,
+        type: "Veg Dry",
+        id: "112"
+      },
+      {
+        dish: "Gobi Crispy",
+        price: 130,
+        type: "Veg Dry",
+        id: "113"
+      },
+      {
+        dish: "Paneer 65",
+        price: 140,
+        type: "Veg Dry",
+        id: "114"
+      },
+      {
+        dish: "Paneer Chilly",
+        price: 140,
+        type: "Veg Dry",
+        id: "115"
+      },
+      {
+        dish: "Mushroom Chilly",
+        price: 140,
+        type: "Veg Dry",
+        id: "116"
+      },
+      {
+        dish: "Mushroom Manchurian",
+        price: 140,
+        type: "Veg Dry",
+        id: "117"
+      },
+      {
+        dish: "Gobi Chilly",
+        price: 130,
+        type: "Veg Dry",
+        id: "118"
+      },
+      {
+        dish: "Mix Veg Gravy",
+        price: 140,
+        type: "Veg Gravy",
+        id: "119"
+      },
+      {
+        dish: "Paneer Masala",
+        price: 140,
+        type: "Veg Gravy",
+        id: "120"
+      },
+      {
+        dish: "Paneer Tikka Masala",
+        price: 180,
+        type: "Veg Gravy",
+        id: "121"
+      },
+      {
+        dish: "Veg Hyderabadi",
+        price: 130,
+        type: "Veg Gravy",
+        id: "122"
+      },
+      {
+        dish: "Veg Kolhapuri",
+        price: 130,
+        type: "Veg Gravy",
+        id: "123"
+      },
+      {
+        dish: "Paneer Muttor",
+        price: 130,
+        type: "Veg Gravy",
+        id: "124"
+      },
+      {
+        dish: "Veg Tawa",
+        price: 130,
+        type: "Veg Gravy",
+        id: "125"
+      },
+      {
+        dish: "Mushroom Masala",
+        price: 140,
+        type: "Veg Gravy",
+        id: "126"
+      },
+      {
+        dish: "Palak Paneer",
+        price: 140,
+        type: "Veg Gravy",
+        id: "127"
+      },
+      {
+        dish: "Dal Fry",
+        price: 130,
+        type: "Veg Gravy",
+        id: "128"
+      },
+      {
+        dish: "Aloo Gobi",
+        price: 130,
+        type: "Veg Gravy",
+        id: "129"
+      },
+      {
+        dish: "Paneer Butter Masala",
+        price: 140,
+        type: "Veg Gravy",
+        id: "130"
+      },
+      {
+        dish: "Mushroom Chilly",
+        price: 140,
+        type: "Veg Gravy",
+        id: "131"
+      },
+      {
+        dish: "Paneer Kadai",
+        price: 140,
+        type: "Veg Gravy",
+        id: "132"
+      },
+      {
+        dish: "Paneer Handi",
+        price: 140,
+        type: "Veg Gravy",
+        id: "133"
+      },
+      {
+        dish: "Paneer Kolhapuri",
+        price: 140,
+        type: "Veg Gravy",
+        id: "134"
+      },
+      {
+        dish: "Paneer Chilly Gravy",
+        price: 140,
+        type: "Veg Gravy",
+        id: "135"
+      },
+      {
+        dish: "Plain Basmati Rice",
+        price: 80,
+        type: "Rice & Noodles",
+        id: "136"
+      },
+      {
+        dish: "Jeera Rice",
+        price: 90,
+        type: "Rice & Noodles",
+        id: "137"
+      },
+      {
+        dish: "Veg Pulao",
+        price: 130,
+        type: "Rice & Noodles",
+        id: "138"
+      },
+      {
+        dish: "Paneer Pulao",
+        price: 120,
+        type: "Rice & Noodles",
+        id: "139"
+      },
+      {
+        dish: "Paneer Fried Rice",
+        price: 130,
+        type: "Rice & Noodles",
+        id: "140"
+      },
+      {
+        dish: "Paneer Schezwan Fried Rice",
+        price: 140,
+        type: "Rice & Noodles",
+        id: "141"
+      },
+      {
+        dish: "Veg Fried Rice",
+        price: 120,
+        type: "Rice & Noodles",
+        id: "142"
+      },
+      {
+        dish: "Prawns Fried Rice",
+        price: 160,
+        type: "Rice & Noodles",
+        id: "143"
+      },
+      {
+        dish: "Chicken Fried Rice",
+        price: 120,
+        type: "Rice & Noodles",
+        id: "144"
+      },
+      {
+        dish: "Chicken Schezwan Fried Rice",
+        price: 130,
+        type: "Rice & Noodles",
+        id: "145"
+      },
+      {
+        dish: "Chicken Triple Fried Rice",
+        price: 180,
+        type: "Rice & Noodles",
+        id: "146"
+      },
+      {
+        dish: "Mix Fried Rice",
+        price: 160,
+        type: "Rice & Noodles",
+        id: "147"
+      },
+      {
+        dish: "Veg Triple Fried Rice",
+        price: 160,
+        type: "Rice & Noodles",
+        id: "148"
+      },
+      {
+        dish: "Veg Schezwan Fried Rice",
+        price: 120,
+        type: "Rice & Noodles",
+        id: "149"
+      },
+      {
+        dish: "Veg Noodles",
+        price: 120,
+        type: "Rice & Noodles",
+        id: "150"
+      },
+      {
+        dish: "Veg Schezwan Noodles",
+        price: 130,
+        type: "Rice & Noodles",
+        id: "151"
+      },
+      {
+        dish: "Chicken Noodles",
+        price: 120,
+        type: "Rice & Noodles",
+        id: "152"
+      },
+      {
+        dish: "Chicken Schezwan Noodles",
+        price: 130,
+        type: "Rice & Noodles",
+        id: "153"
+      },
+      {
+        dish: "Chicken Butter Garlic Fried Rice",
+        price: 140,
+        type: "Rice & Noodles",
+        id: "154"
+      },
+      {
+        dish: "Prawns Noodles",
+        price: 160,
+        type: "Rice & Noodles",
+        id: "155"
+      },
+      {
+        dish: "Egg Fried Rice",
+        price: 120,
+        type: "Rice & Noodles",
+        id: "156"
+      },
+      {
+        dish: "Tandoori Roti",
+        price: 10,
+        type: "Tandoori",
+        id: "157"
+      },
+      {
+        dish: "Butter Roti",
+        price: 15,
+        type: "Tandoori",
+        id: "158"
+      },
+      {
+        dish: "Plain Naan",
+        price: 30,
+        type: "Tandoori",
+        id: "159"
+      },
+      {
+        dish: "Butter Naan",
+        price: 40,
+        type: "Tandoori",
+        id: "160"
+      },
+      {
+        dish: "Butter Garlic Naan",
+        price: 50,
+        type: "Tandoori",
+        id: "161"
+      },
+      {
+        dish: "Cheese Garlic Naan",
+        price: 60,
+        type: "Tandoori",
+        id: "162"
+      },
+      {
+        dish: "Cheese Chilly Garlic Naan",
+        price: 60,
+        type: "Tandoori",
+        id: "163"
+      },
+      {
+        dish: "Stuff Cheese Garlic Naan",
+        price: 80,
+        type: "Tandoori",
+        id: "164"
+      },
+      {
+        dish: "Parata",
+        price: 20,
+        type: "Tandoori",
+        id: "165"
+      },
+      {
+        dish: "Paneer Kabab",
+        price: 160,
+        type: "Tandoori",
+        id: "166"
+      },
+      {
+        dish: "Paneer Tikka",
+        price: 160,
+        type: "Tandoori",
+        id: "167"
+      },
+      {
+        dish: "Paneer Haryali",
+        price: 160,
+        type: "Tandoori",
+        id: "168"
+      },
+      {
+        dish: "Paneer Malai",
+        price: 160,
+        type: "Tandoori",
+        id: "169"
+      },
+      {
+        dish: "Chicken Haryali Kabab",
+        price: 160,
+        type: "Tandoori",
+        id: "170"
+      },
+      {
+        dish: "Chicken Malai Kabab",
+        price: 180,
+        type: "Tandoori",
+        id: "171"
+      },
+      {
+        dish: "Tandoori Full",
+        price: 330,
+        type: "Tandoori",
+        id: "172"
+      },
+      {
+        dish: "Tandoori Half",
+        price: 170,
+        type: "Tandoori",
+        id: "173"
+      },
+      {
+        dish: "Liver Tikka",
+        price: 130,
+        type: "Tandoori",
+        id: "174"
+      },
+      {
+        dish: "Butter Garlic Roti",
+        price: 30,
+        type: "Tandoori",
+        id: "175"
+      }
+    ];
+
+    const cart = [];
+    document.addEventListener("DOMContentLoaded", () => {
+      displayMenu(menuData); // Display all items on page load
+    });
+    function openMenu() {
+      const menuPopup = document.getElementById("menuPopup");
+      const overlay = document.querySelector(".overlay");
+      const menuList = document.getElementById("menuList");
+
+      menuList.innerHTML = "";
+      displayMenu(menuData);
+
+      menuPopup.classList.add("active");
+      overlay.classList.add("active");
+    }
+
+    function displayMenu(items) {
+      const menuList = document.getElementById("menuList");
+      items.forEach((item) => {
+        const menuItem = document.createElement("div");
+        menuItem.className = "popup-item";
+
+        if (item.boneless) {
+          menuItem.innerHTML = `
+            <div>
+              <span>${item.dish}</span>
+            </div>
+            <div>
+              <button onclick="addToCart('${item.id}', false)">₹${item.price}</button>
+              <button onclick="addToCart('${item.id}', true)">₹${item.bonelessPrice}</button>
+              <span class="quantity-display" id="quantity-${item.id}-normal">0</span>
+              <span class="quantity-display" id="quantity-${item.id}-boneless">0</span>
+            </div>
+          `;
+        } else {
+          menuItem.innerHTML = `
+            <div>
+              <span>${item.dish}</span>
+            </div>
+            <div>
+              <button onclick="addToCart('${item.id}', false)">₹${item.price}</button>
+              <span class="quantity-display" id="quantity-${item.id}-normal">0</span>
+            </div>
+          `;
+        }
+
+        menuList.appendChild(menuItem);
+      });
+    }
+
+    function filterMenu() {
+      const filterValue = document.getElementById("filterSelect").value;
+      const filteredItems = filterValue
+        ? menuData.filter(item => item.type === filterValue)
+        : menuData;
+
+      document.getElementById("menuList").innerHTML = "";
+      displayMenu(filteredItems);
+    }
+
+    function addToCart(itemId, isBoneless) {
+      const item = menuData.find(i => i.id === itemId);
+      const cartKey = isBoneless ? `${itemId}-boneless` : `${itemId}-normal`;
+      const cartItem = cart.find(i => i.cartKey === cartKey);
+
+      if (cartItem) {
+        cartItem.quantity++;
+      } else {
+        cart.push({ ...item, price: isBoneless ? item.bonelessPrice : item.price, cartKey, quantity: 1 });
+      }
+
+      document.getElementById(`quantity-${itemId}-${isBoneless ? 'boneless' : 'normal'}`).innerText =
+        cart.find(i => i.cartKey === cartKey).quantity;
+    }
+
+    function finalizeCart() {
+      const cartPopup = document.getElementById("cartPopup");
+      const overlay = document.querySelector(".overlay");
+      const cartList = document.getElementById("cartList");
+      const totalAmount = document.getElementById("totalAmount");
+     
+      cartList.innerHTML = "";
+      let total = 0;
+      closePopup('menuPopup')
+      cart.forEach((item) => {
+        const cartItem = document.createElement("div");
+        cartItem.className = "popup-item";
+
+        cartItem.innerHTML = `
+          <div>
+            <span>${item.dish} (${item.cartKey.includes("boneless") ? "Boneless" : "Normal"})</span>
+            <span class="price">₹${item.price} x ${item.quantity}</span>
+          </div>
+          <div>₹${item.price * item.quantity}</div>
+        `;
+
+        total += item.price * item.quantity;
+        cartList.appendChild(cartItem);
+      });
+
+      totalAmount.innerText = `₹${total}`;
+      cartPopup.classList.add("active");
+      overlay.classList.add("active");
+    }
+
+    function sendOrder() {
+      const cartDetails = cart.map(item => `${item.dish} (${item.cartKey.includes("boneless") ? "Boneless" : "Normal"}) x ${item.quantity}`).join(", ");
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const message = `Order Details: ${cartDetails}. Total: ₹${total}`;
+      const whatsappUrl = `https://wa.me/917385707223?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
+    }
+
+    function closePopup(popupId) {
+      document.getElementById(popupId).classList.remove("active");
+      document.querySelector(".overlay").classList.remove("active");
+    }
+
+    function closeAllPopups() {
+      document.querySelectorAll(".popup").forEach(popup => popup.classList.remove("active"));
+      document.querySelector(".overlay").classList.remove("active");
+    }
+  </script>
+</body>
+
+</html>
